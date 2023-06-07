@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+version='1.0'
+
+echo "JournalNet Version: $version"
+read arg
+[ -z $arg ] && exit 0
+if [ -d "/home/$arg" ] && [ -e "/home/$arg/.journal" ]; then
+    cat /home/$arg/.journal
+else
+    echo "User not found."
+    exit 1
+fi
