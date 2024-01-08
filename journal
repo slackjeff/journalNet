@@ -1,6 +1,64 @@
 #!/bin/bash
 port=2826
 
+############################################################
+# Help                                                     #
+############################################################
+Help()
+{
+   # Display Help
+   echo "journalNet Client Options:"
+   echo "-b     Print the addresses in bookmarks.txt file."
+   echo "-h     Print this Help."
+}
+
+
+############################################################
+# Bookmarks                                                     #
+############################################################
+Bookmarks()
+{
+   # Display Bookmarks
+   echo "Bookmarks List"
+   readarray -t Bookmarks < bookmarks.txt
+
+PS3='Please enter your choice or 0 to exit: '
+select selection in "${Bookmarks[@]}"; do
+    if [[ $REPLY == "0" ]]; then
+        echo 'Hasta la vista, Baby!' >&2
+        exit
+    else
+        ./journal $selection
+#If you copied the journalNet client (./journal) to /usr/bin just change the line above from "./journal" to "journal"        
+        break
+    fi
+done
+}
+
+############################################################
+# Process the input options. Add options as needed.        #
+############################################################
+# Get the options
+while getopts ":hb" option; do
+   case $option in
+      h) # display Help
+         Help
+         exit;;
+      b) # display Bookmarks
+         Bookmarks
+         exit;;
+     \?) # Invalid option
+         echo "Error: Invalid option."
+         exit;;
+   esac
+done
+
+############################################################
+############################################################
+# Main program                                             #
+############################################################
+############################################################
+
 usage()
 {
     echo "JournalNet"
