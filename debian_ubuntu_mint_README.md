@@ -7,4 +7,4 @@ Then change the first line of the installation script from "#!/bin/sh" to "#!/bi
 If you want to run your journal first on your localhost for test just use theaccountwherejournalis@127.0.0.1
 Last step, restart xinetd (sudo /etc/init.d/xinetd restart)
 
-Security tip: Create a regular user to publish "journalNet" from his home directory.
+Security tip: Create a regular user (without sudo access) to publish "journalNet" from his home directory.
