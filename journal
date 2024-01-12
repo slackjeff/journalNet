@@ -29,7 +29,7 @@ Bookmarks()
 PS3='Please enter your choice or 0 to exit: '
 select selection in "${Bookmarks[@]}"; do
     if [[ $REPLY == "0" ]]; then
-        echo 'Hasta la vista, Baby!' >&2
+        echo -e '\033[1;30mHasta la vista, Baby!\033[0m' >&2
         exit
     else
         ./journal $selection
