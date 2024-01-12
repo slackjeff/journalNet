@@ -10,6 +10,10 @@ Help()
    echo "journalNet Client Options:"
    echo "-b     Print the addresses in bookmarks.txt file."
    echo "-h     Print this Help."
+   echo
+   echo "Info: You can read journals with netcat:"
+   echo "echo username | nc 127.0.0.1 2826" 
+
 }
 
 
@@ -38,6 +42,7 @@ done
 ############################################################
 # Process the input options. Add options as needed.        #
 ############################################################
+################################
 # Get the options
 while getopts ":hb" option; do
    case $option in
@@ -53,11 +58,11 @@ while getopts ":hb" option; do
    esac
 done
 
-############################################################
+
 ############################################################
 # Main program                                             #
 ############################################################
-############################################################
+
 
 usage()
 {
