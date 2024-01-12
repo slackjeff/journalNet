@@ -23,7 +23,7 @@ Help()
 Bookmarks()
 {
    # Display Bookmarks
-   echo "Bookmarks List"
+   echo "Bookmark List"
    readarray -t Bookmarks < bookmarks.txt
 
 PS3='Please enter your choice or 0 to exit: '
