@@ -51,7 +51,7 @@ service journalnet
         socket_type     = stream
         protocol        = tcp
         log_type        = FILE /var/log/journalnet.log
-        lon_on_success += PID USERID HOST DURATION EXIT
+        log_on_success += PID USERID HOST DURATION EXIT
         log_on_failure += USERID
         server          = /usr/local/sbin/journalnet
         user            = root
