@@ -41,7 +41,7 @@ journalnet  2826/tcp    # JournalNet Daily Journal
 EOF
 fi
 #xinetd journalnet service configuration
-#Initially it was choosed "log_type = SYSLOG daemon info" but adding a visitors count and a more detailed logging, this configuration was changed.
+#Initially was choosed "log_type = SYSLOG daemon info" but was added a visitors counter and more log details, so this configuration was changed.
 echo "Send journanet to $xinetd/journalnet"
 cat << EOF >> $xinetd/journalnet
 service journalnet

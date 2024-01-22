@@ -19,7 +19,7 @@ Help()
    echo "journalNet Client Options:"
    echo
    echo "-B     Show random ASCII Banner from banner folder."
-   echo "-b     Print the addresses of bookmarks.txt file."
+   echo "-b     Print the addresses in bookmarks.txt file."
    echo "-h     Print this Help."
    echo
    echo "Info: You can read journals with netcat:"
