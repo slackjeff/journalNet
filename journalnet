@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 version='1.0'
-
 echo "JournalNet Version: $version"
+
+# A visitors counter, it read the "/var/log/journalnet.log" and count by different IP address.
+visitors_count=$(grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+" /var/log/journalnet.log | sort | uniq | wc -l)
+echo -e "This Journal received \033[1;37m$visitors_count\033[0m visitors."
+
 read arg
 [ -z "$arg" ] && exit 0
 if [ -d "/home/$arg" ] && [ -e "/home/$arg/.journal" ]; then

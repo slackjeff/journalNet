@@ -1,13 +1,13 @@
 #!/bin/sh
 
 ################################
-# Vars
+# Vars                         #
 ################################
 services=/etc/services
 xinetd=/etc/xinetd.d/
 
 ################################
-# Tests
+# Tests                        #
 ################################
 [ $UID -ne 0 ] && { printf 'Please need root.\n'; exit 1 ;}
 
@@ -17,7 +17,7 @@ if ! type -p xinetd 1>/dev/null; then
 fi
 
 ################################
-# Main
+# Main                         #
 ################################
 
 while true; do
@@ -40,7 +40,8 @@ if ! grep -q journalnet $services; then
 journalnet  2826/tcp    # JournalNet Daily Journal
 EOF
 fi
-
+#xinetd journalnet service configuration
+#Initially it was choosed "log_type = SYSLOG daemon info" but adding a visitors count and a more detailed logging, this configuration was changed.
 echo "Send journanet to $xinetd/journalnet"
 cat << EOF >> $xinetd/journalnet
 service journalnet
@@ -49,13 +50,13 @@ service journalnet
         bind            = $ip
         socket_type     = stream
         protocol        = tcp
-        log_type = SYSLOG daemon info
+        log_type        = FILE /var/log/journalnet.log
+        log_on_success += PID USERID HOST DURATION EXIT
         log_on_failure += USERID
         server          = /usr/local/sbin/journalnet
         user            = root
         instances       = UNLIMITED
         wait            = no
-        log_on_success  = PID HOST DURATION EXIT
 }
 EOF
 
