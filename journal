@@ -2,20 +2,30 @@
 port=2826
 
 ############################################################
+# Print Banner.                                            #
+############################################################
+Banner()
+{
+clear
+banner="$(ls -1 ./banner/*.sh | shuf | head -1)"
+eval "$banner"  
+}
+############################################################
 # Help                                                     #
 ############################################################
 Help()
 {
    # Display Help
    echo "journalNet Client Options:"
-   echo "-b     Print the addresses in bookmarks.txt file."
+   echo
+   echo "-B     Show random ASCII Banner from banner folder."
+   echo "-b     Print the addresses of bookmarks.txt file."
    echo "-h     Print this Help."
    echo
    echo "Info: You can read journals with netcat:"
-   echo "echo username | nc 127.0.0.1 2826" 
+   echo "echo \"username\" | nc 127.0.0.1 2826" 
 
 }
-
 
 ############################################################
 # Bookmarks                                                #
@@ -44,12 +54,15 @@ done
 ############################################################
 ################################
 # Get the options
-while getopts ":hb" option; do
+while getopts ":Bhb" option; do
    case $option in
-      h) # display Help
+      B) # Disable splash
+	     Banner
+         continue;;
+      h) # Display Help
          Help
          exit;;
-      b) # display Bookmarks
+      b) # Display Bookmarks
          Bookmarks
          exit;;
      \?) # Invalid option
@@ -58,12 +71,9 @@ while getopts ":hb" option; do
    esac
 done
 
-
 ############################################################
 # Main program                                             #
 ############################################################
-
-
 usage()
 {
     echo "JournalNet"
@@ -73,9 +83,11 @@ usage()
 
 [[ -z "$@" ]] && usage
 
-user="$(echo "$@" | cut -d @ -f 1)"
+user="$(echo "$@" | cut -d ' ' -f 2| cut -d @ -f 1)"
 host="$(echo "$@" | cut -d @ -f 2)"
 
 exec 3<>/dev/tcp/$host/$port
 echo "$user" >&3
+#To test return from cut in the "$@" variable.
+#echo "$user"
 cat <&3
