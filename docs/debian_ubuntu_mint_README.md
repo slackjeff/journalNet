@@ -9,29 +9,29 @@ Files
 |              |
 |______________|
 ```
-install.sh: It's the installation script (Need chmod +x). You can delete it from the project folder after the installation.
-journal: It's the client program stays at journalNet folder (Need chmod +x). Launch with ./journal -B yourusername@127.0.0.1 or ./journal -B yourusername@your.dynamic.dns 
-journalnet: It's the server program, stays at /usr/local/sbin/ folder. You can delete it from the project folder after the installation.
-.journal: It's your journal file, got to stay directly at the user home folder.
-bookmarks.txt: It's your journal bookmarks file, just add or delete journals addresses in this file and relaunch the client with ./journal -b 
-banner folder: It's where the "sh" ASCII files are, your could add or delete ASCII Banners, just remember to "chmod +x" in "sh" ASCII files to make it work.
-docs folder: Info and troubleshooting.
-readme file: Basic info.
+install.sh: It's the installation script (Need chmod +x). You can delete it from the project folder after the installation.  
+journal: It's the client program stays at journalNet folder (Need chmod +x). Launch with ./journal -B yourusername@127.0.0.1 or ./journal -B yourusername@your.dynamic.dns   
+journalnet: It's the server program, stays at /usr/local/sbin/ folder. You can delete it from the project folder after the installation.  
+.journal: It's your journal file, got to stay directly at the user home folder.  
+bookmarks.txt: It's your journal bookmarks file, just add or delete journals addresses in this file and relaunch the client with ./journal -b   
+banner folder: It's where the "sh" ASCII files are, your could add or delete ASCII Banners, just remember to "chmod +x" in "sh" ASCII files to make it work.  
+docs folder: Info and troubleshooting.  
+readme file: Basic info.  
 
 Dependencies
 
-First install xinetd (sudo apt-get install xinetd)
-Open tcp port 2886 on your firewall (sudo ufw allow 2826)
-If the installation script for the "journalNet" gives errors such as "unexpected operator" or repeats the "xinetd is required" message and freeze:
-Then change the first line of the installation script from "#!/bin/sh" to "#!/bin/bash" and run the journalNet installation script again.
+First install xinetd (sudo apt-get install xinetd)  
+Open tcp port 2886 on your firewall (sudo ufw allow 2826)  
+If the installation script for the "journalNet" gives errors such as "unexpected operator" or repeats the "xinetd is required" message and freeze:  
+Then change the first line of the installation script from "#!/bin/sh" to "#!/bin/bash" and run the journalNet installation script again.  
 
-If you want to run your journal first on localhost for test just use theaccountwherejournalis@127.0.0.1
-Last step, restart xinetd (sudo /etc/init.d/xinetd restart)
+If you want to run your journal first on localhost for test just use theaccountwherejournalis@127.0.0.1  
+Last step, restart xinetd (sudo /etc/init.d/xinetd restart)  
 
 Troubleshooting
 
-To test if the default journalNet port (2826) is opened with the choosen IP address run: sudo netstat -tulpn
-If xinted initialized correctly the netstat return will be: 
+To test if the default journalNet port (2826) is opened with the choosen IP address run: sudo netstat -tulpn  
+If xinted initialized correctly the netstat return will be:     
 
 tcp        0      0 my.journalNet.IP.localhost:2826       0.0.0.0:*               LISTEN       3553/xinetd 
 
@@ -39,23 +39,23 @@ or use a Dynamic DNS Service.
 
 tcp        0      0 my.journalNet.ddclient.dns:2826       0.0.0.0:*               LISTEN       3553/xinetd 
 
-If your system started but the xinetd service couldn't retrieve your DNS from ddclient, just make a simple hack and put delay (sleep) in xinetd service. 
-Edit: nano /etc/init.d/xinetd and paste the following lines at the top of this file: 
-
+If your system started but the xinetd service couldn't retrieve your DNS from ddclient, just make a simple hack and put delay (sleep) in xinetd service.   
+Edit: nano /etc/init.d/xinetd and paste the following lines at the top of this file:   
+```
 # sleep to sync with ddclient and journalNet
 /bin/sleep 30
 # clear poisonned environment
 unset TMPDIR
-
-Then reload xinetd: sudo service xinetd restart
+```
+Then reload xinetd: sudo service xinetd restart  
 
 Info
 
-The journal file stay at the user home folder as .journal
+The journal file stay at the user home folder as .journal  
 
-Security tip: Create a regular user (without sudo access) to publish "journalNet" from his home folder.
+Security tip: Create a regular user (without sudo access) to publish "journalNet" from his home folder.  
 
-To publish your ".journal" use a Dynamic DNS Service as https://www.dynu.com/ and install the program ddclient: sudo apt-get install ddclient 
+To publish your ".journal" use a Dynamic DNS Service as https://www.dynu.com/ and install the program ddclient: sudo apt-get install ddclient   
 
 Usage
 
@@ -66,7 +66,7 @@ Usage
 echo "theaccountwherejournalis" | nc your.dynamic.dns 2826
 
 ddclient https://www.dynu.com/ configuration example:
-
+```
 # Configuration file for ddclient generated by debconf
 #
 # /etc/ddclient.conf
@@ -78,7 +78,7 @@ server=api.dynu.com
 login=yourusername
 password='yourpassword'
 your.dynudns.org
-
+```
 
 
 
