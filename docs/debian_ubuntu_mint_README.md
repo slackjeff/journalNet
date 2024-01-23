@@ -79,6 +79,5 @@ password='yourpassword'
 your.dynudns.org
 ```
 
-
-
+To edit your journal IP address modify the file: sudo nano /etc/xinetd.d/journalnet
 

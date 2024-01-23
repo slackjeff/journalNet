@@ -78,3 +78,4 @@ login=seunomedeusuario
 password='suasenha'
 seu.dynudns.org
 ```
+Para editar o endereço IP do seu journal, modifique o arquivo: sudo nano /etc/xinetd.d/journalnet
