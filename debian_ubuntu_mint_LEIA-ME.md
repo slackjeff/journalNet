@@ -15,7 +15,7 @@ journal: É o programa cliente que fica na pasta journalNet (precisa de chmod +x
 journalnet: É o programa servidor, fica na pasta /usr/local/sbin/. Você pode excluí-lo da pasta do projeto após a instalação.
 .journal: É o seu arquivo journal, deve ficar diretamente na pasta home do usuário.
 bookmarks.txt: É o arquivo de favoritos do seu journal, basta adicionar ou excluir endereços de journals neste arquivo e reiniciar o cliente com ./journal -b 
-banner folder(precisa de chmod +x em arquivos ASCII "sh"): É onde estão os arquivos ASCII "sh", você pode adicionar ou excluir Banners ASCII, apenas lembre de "chmod +x" para que funcione.
+banner folder (precisa de chmod +x em arquivos ASCII "sh"): É onde estão os arquivos ASCII "sh", você pode adicionar ou excluir Banners ASCII, apenas lembre de "chmod +x" para que funcione.
 readme files: Informações e solução de problemas. 
 
 Dependências
