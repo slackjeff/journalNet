@@ -43,6 +43,6 @@ Files
 **banner folder**: It's where the "sh" ASCII files are, your could add or delete ASCII Banners, just remember to "chmod +x" to make it work.  
 **readme files**: Info and troubleshooting.  
 
-Made by slackjeff sorcery with Demogorgon's scratches and dents.  
+_Made by slackjeff sorcery with Demogorgon's scratches and dents._  
 
 
