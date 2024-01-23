@@ -56,7 +56,7 @@ Dica de segurança: Crie um usuário normal (sem acesso sudo) para publicar o se
 
 Para publicar seu "journal" use um serviço DNS dinâmico como https://www.dynu.com/ e instale o programa ddclient: sudo apt-get install ddclient  
 
-Utilização
+**Utilização**
 
 ./journal acontaondeojournalesta@seu.dns.dinâmico
 
