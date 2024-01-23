@@ -6,32 +6,31 @@ Arquivos
 |              |
 |              |
 |              |
-|              |
 |______________|
 ```
-install.sh: É o script de instalação (precisa de chmod +x). Você pode excluí-lo da pasta do projeto após a instalação.
-journal: É o programa cliente que fica na pasta journalNet (precisa de chmod +x). Inicie com ./journal -B seunomedeusuario@127.0.0.1 ou ./journal -B seunomedeusuario@your.dynamic.dns 
-journalnet: É o programa servidor, fica na pasta /usr/local/sbin/. Você pode excluí-lo da pasta do projeto após a instalação.
-.journal: É o seu arquivo journal, deve ficar diretamente na pasta home do usuário.
-bookmarks.txt: É o arquivo de favoritos do seu journal, basta adicionar ou excluir endereços de journals neste arquivo e reiniciar o cliente com ./journal -b 
-banner folder: É onde estão os arquivos ASCII "sh", você pode adicionar ou excluir Banners ASCII, apenas lembre de "chmod +x" em arquivos ASCII "sh" para que funcione.
-docs folder: Info and troubleshooting.
-readme file:  Informações básicas. 
+**install.sh**: É o script de instalação (precisa de chmod +x). Você pode excluí-lo da pasta do projeto após a instalação.  
+**journal**: É o programa cliente que fica na pasta journalNet (precisa de chmod +x). Inicie com ./journal -B seunomedeusuario@127.0.0.1 ou ./journal -B seunomedeusuario@your.dynamic.dns    
+**journalnet**: É o programa servidor, fica na pasta /usr/local/sbin/. Você pode excluí-lo da pasta do projeto após a instalação.  
+**.journal**: É o seu arquivo journal, deve ficar diretamente na pasta home do usuário.  
+**bookmarks.txt**: É o arquivo de favoritos do seu journal, basta adicionar ou excluir endereços de journals neste arquivo e reiniciar o cliente com ./journal -b   
+**banner folder**: É onde estão os arquivos ASCII "sh", você pode adicionar ou excluir Banners ASCII, apenas lembre de "chmod +x" em arquivos ASCII "sh" para que funcione.  
+**docs folder**: Info and troubleshooting.  
+**readme file**:  Informações básicas.   
 
-Dependências
+**Dependências**
 
-Primeiro instale o xinetd (sudo apt-get install xinetd)
-Abra a porta TCP 2886 no seu firewall (sudo ufw permitir 2826)
-Se o script de instalação do "journalNet" apresentar erros como "operador inesperado" ou repetir a mensagem "xinetd é necessário" e congelar:
-Em seguida, altere a primeira linha do script de instalação de "#!/bin/sh" para "#!/bin/bash" e execute o script de instalação do journalNet novamente.
+Primeiro instale o xinetd (sudo apt-get install xinetd)  
+Abra a porta TCP 2886 no seu firewall (sudo ufw permitir 2826)  
+Se o script de instalação do "journalNet" apresentar erros como "operador inesperado" ou repetir a mensagem "xinetd é necessário" e congelar:  
+Em seguida, altere a primeira linha do script de instalação de "#!/bin/sh" para "#!/bin/bash" e execute o script de instalação do journalNet novamente.  
 
-Se você quiser executar seu journal primeiro no localhost para teste, basta usar acontaondeojournalesta@127.0.0.1
-Última etapa, reinicie o xinetd (sudo /etc/init.d/xinetd restart)
+Se você quiser executar seu journal primeiro no localhost para teste, basta usar acontaondeojournalesta@127.0.0.1  
+Última etapa, reinicie o xinetd (sudo /etc/init.d/xinetd restart)  
 
-Solução de problemas
+**Solução de problemas**
 
-Para testar se a porta padrão do journalNet (2826) está aberta com o endereço IP escolhido, execute: sudo netstat -tulpn
-Se o xinted for inicializado corretamente, o retorno do netstat será:
+Para testar se a porta padrão do journalNet (2826) está aberta com o endereço IP escolhido, execute: sudo netstat -tulpn  
+Se o xinted for inicializado corretamente, o retorno do netstat será:  
 
 tcp 0 0 my.journalNet.IP.localhost:2826 0.0.0.0:* ESCUTE 3553/xinetd
 
@@ -39,23 +38,23 @@ ou use um serviço DNS dinâmico.
 
 tcp 0 0 my.journalNet.ddclient.dns:2826 0.0.0.0:* ESCUTE 3553/xinetd
 
-Se o seu sistema foi iniciado, mas o serviço xinetd não conseguiu recuperar seu DNS do ddclient, basta fazer um hack simples e colocar atraso (sleep) no serviço xinetd.
-Edite: nano /etc/init.d/xinetd e cole as seguintes linhas no topo deste arquivo:
-
+Se o seu sistema foi iniciado, mas o serviço xinetd não conseguiu recuperar seu DNS do ddclient, basta fazer um hack simples e colocar atraso (sleep) no serviço xinetd.  
+Edite: nano /etc/init.d/xinetd e cole as seguintes linhas no topo deste arquivo:  
+```
 # sleep to sync with ddclient and journalNet
 /bin/sleep 30
 # clear poisonned environment
 unset TMPDIR
-
+```
 Em seguida, recarregue o xinetd: sudo service xinetd restart
 
-Informações
+**Informações**
 
-O arquivo do journal fica no diretório home do usuário como .journal
+O arquivo do journal fica no diretório home do usuário como .journal  
 
-Dica de segurança: Crie um usuário normal (sem acesso sudo) para publicar o seu "journal" a partir desse diretório de usuário.
+Dica de segurança: Crie um usuário normal (sem acesso sudo) para publicar o seu "journal" a partir desse diretório de usuário.  
 
-Para publicar seu "journal" use um serviço DNS dinâmico como https://www.dynu.com/ e instale o programa ddclient: sudo apt-get install ddclient
+Para publicar seu "journal" use um serviço DNS dinâmico como https://www.dynu.com/ e instale o programa ddclient: sudo apt-get install ddclient  
 
 Utilização
 
@@ -66,7 +65,7 @@ Utilização
 echo "acontaondeojournalesta" | nc seu.dns.dinâmico 2826
 
 Exemplo de configuração ddclient https://www.dynu.com/:
-
+```
 # Configuration file for ddclient generated by debconf
 #
 # /etc/ddclient.conf
@@ -78,3 +77,4 @@ server=api.dynu.com
 login=seunomedeusuario
 password='suasenha'
 seu.dynudns.org
+```
