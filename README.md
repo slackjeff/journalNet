@@ -24,7 +24,7 @@ by slackjeff and Demogorgon
 - Restart xinetd service.
 - Create file .journal on your home folder.
 - Test with ./journal -B username@127.0.0.1 or ./journal -B username@your.dynamic.dns (Remove "-B" to hide the Banner).
-- To change your journal IP address modify the file: sudo nano /etc/xinetd.d/journalnet and restart xinetd service.  
+- To change your journal IP address edit the file /etc/xinetd.d/journalnet and restart xinetd service.  
 ```
 Files
   ___
