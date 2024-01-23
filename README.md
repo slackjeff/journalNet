@@ -1,4 +1,4 @@
-
+```
  ▄▄▄██▀▀▀▒█████   █    ██  ██▀███   ███▄    █  ▄▄▄       ██▓     ███▄    █ ▓█████▄▄▄█████▓   
    ▒██  ▒██▒  ██▒ ██  ▓██▒▓██ ▒ ██▒ ██ ▀█   █ ▒████▄    ▓██▒     ██ ▀█   █ ▓█   ▀▓  ██▒ ▓▒   
    ░██  ▒██░  ██▒▓██  ▒██░▓██ ░▄█ ▒▓██  ▀█ ██▒▒██  ▀█▄  ▒██░    ▓██  ▀█ ██▒▒███  ▒ ▓██░ ▒░   
@@ -8,7 +8,7 @@
  ▒ ░▒░    ░ ▒ ▒░ ░░▒░ ░ ░   ░▒ ░ ▒░░ ░░   ░ ▒░  ▒   ▒▒ ░░ ░ ▒  ░░ ░░   ░ ▒░ ░ ░  ░   ░       
  ░ ░ ░  ░ ░ ░ ▒   ░░░ ░ ░   ░░   ░    ░   ░ ░   ░   ▒     ░ ░      ░   ░ ░    ░    ░         
  ░   ░      ░ ░     ░        ░              ░       ░  ░    ░  ░         ░    ░  ░           
-                                                                                             
+                                                                                            
 # journalNet
 Daily journaling service
 by slackjeff
@@ -16,7 +16,7 @@ by slackjeff
 # journalNet: Zines + ASCII
 Bringing back the fun times!
 by slackjeff and Demogorgon
-
+```
 Instalation notes:
 - Read the README files.
 - Install xinetd =)
@@ -24,7 +24,7 @@ Instalation notes:
 - Restart xinetd service.
 - Create file .journal on your home folder.
 - Test with ./journal -B username@127.0.0.1 or ./journal -B username@your.dynamic.dns (Remove "-B" to hide the Banner).
-
+```
 Files
   ___
  /___\_________
@@ -44,5 +44,5 @@ banner folder(Need chmod +x in "sh" ASCII files): It's where the "sh" ASCII file
 readme files: Info and troubleshooting. 
 
 Made by slackjeff sorcery with Demogorgon's scratches and dents.  
-
+```
 
