@@ -41,7 +41,8 @@ Files
 **.journal**: It's your journal file, got to stay directly at the user home folder.  
 **bookmarks.txt**: It's your journal bookmarks file, just add or delete journals addresses in this file and relaunch the client with ./journal -b  
 **banner folder**: It's where the "sh" ASCII files are, your could add or delete ASCII Banners, just remember to "chmod +x" to make it work.  
-**readme files**: Info and troubleshooting.  
+**docs folder**: Info and troubleshooting.  
+**readme file**: Basic info.  
 
 _Made by slackjeff sorcery with Demogorgon's scratches and dents._  
 
