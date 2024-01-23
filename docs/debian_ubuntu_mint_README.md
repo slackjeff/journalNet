@@ -6,19 +6,18 @@ Files
 |              |
 |              |
 |              |
-|              |
 |______________|
 ```
-install.sh: It's the installation script (Need chmod +x). You can delete it from the project folder after the installation.  
-journal: It's the client program stays at journalNet folder (Need chmod +x). Launch with ./journal -B yourusername@127.0.0.1 or ./journal -B yourusername@your.dynamic.dns   
-journalnet: It's the server program, stays at /usr/local/sbin/ folder. You can delete it from the project folder after the installation.  
-.journal: It's your journal file, got to stay directly at the user home folder.  
-bookmarks.txt: It's your journal bookmarks file, just add or delete journals addresses in this file and relaunch the client with ./journal -b   
-banner folder: It's where the "sh" ASCII files are, your could add or delete ASCII Banners, just remember to "chmod +x" in "sh" ASCII files to make it work.  
-docs folder: Info and troubleshooting.  
-readme file: Basic info.  
+**install.sh**: It's the installation script (Need chmod +x). You can delete it from the project folder after the installation.  
+**journal**: It's the client program stays at journalNet folder (Need chmod +x). Launch with ./journal -B yourusername@127.0.0.1 or ./journal -B yourusername@your.dynamic.dns   
+**journalnet**: It's the server program, stays at /usr/local/sbin/ folder. You can delete it from the project folder after the installation.  
+**.journal**: It's your journal file, got to stay directly at the user home folder.  
+**bookmarks.txt**: It's your journal bookmarks file, just add or delete journals addresses in this file and relaunch the client with ./journal -b   
+**banner folder**: It's where the "sh" ASCII files are, your could add or delete ASCII Banners, just remember to "chmod +x" in "sh" ASCII files to make it work.  
+**docs folder**: Info and troubleshooting.  
+**readme file**: Basic info.  
 
-Dependencies
+**Dependencies**
 
 First install xinetd (sudo apt-get install xinetd)  
 Open tcp port 2886 on your firewall (sudo ufw allow 2826)  
@@ -28,7 +27,7 @@ Then change the first line of the installation script from "#!/bin/sh" to "#!/bi
 If you want to run your journal first on localhost for test just use theaccountwherejournalis@127.0.0.1  
 Last step, restart xinetd (sudo /etc/init.d/xinetd restart)  
 
-Troubleshooting
+**Troubleshooting**
 
 To test if the default journalNet port (2826) is opened with the choosen IP address run: sudo netstat -tulpn  
 If xinted initialized correctly the netstat return will be:     
@@ -49,7 +48,7 @@ unset TMPDIR
 ```
 Then reload xinetd: sudo service xinetd restart  
 
-Info
+**Info**
 
 The journal file stay at the user home folder as .journal  
 
@@ -57,7 +56,7 @@ Security tip: Create a regular user (without sudo access) to publish "journalNet
 
 To publish your ".journal" use a Dynamic DNS Service as https://www.dynu.com/ and install the program ddclient: sudo apt-get install ddclient   
 
-Usage
+**Usage**
 
 ./journal theaccountwherejournalis@your.dynamic.dns
 
