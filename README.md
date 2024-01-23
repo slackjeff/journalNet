@@ -34,7 +34,7 @@ Files
 |              |
 |              |
 |______________|
-
+```
 install.sh: It's the installation script (Need chmod +x). You can delete it from the project folder after the installation.
 journal: It's the client program stays at journalNet folder (Need chmod +x). Launch with ./journal -B yourusername@127.0.0.1 or ./journal -B yourusername@your.dynamic.dns 
 journalnet: It's the server program, stays at /usr/local/sbin/ folder. You can delete it from the project folder after the installation.
@@ -44,5 +44,5 @@ banner folder(Need chmod +x in "sh" ASCII files): It's where the "sh" ASCII file
 readme files: Info and troubleshooting. 
 
 Made by slackjeff sorcery with Demogorgon's scratches and dents.  
-```
+
 
