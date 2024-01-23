@@ -7,7 +7,6 @@ Arquivos
 |              |
 |              |
 |              |
-|              |
 |______________|
 
 install.sh: É o script de instalação (precisa de chmod +x). Você pode excluí-lo da pasta do projeto após a instalação.

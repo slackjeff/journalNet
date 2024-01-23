@@ -32,7 +32,6 @@ Files
 |              |
 |              |
 |              |
-|              |
 |______________|
 ```
 **install.sh**: It's the installation script (Need chmod +x). You can delete it from the project folder after the installation.  
