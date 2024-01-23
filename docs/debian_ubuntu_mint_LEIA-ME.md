@@ -1,5 +1,5 @@
 Debian/Ubuntu/Mint
-
+```
 Arquivos
   ___
  /___\_________
@@ -8,7 +8,7 @@ Arquivos
 |              |
 |              |
 |______________|
-
+```
 install.sh: É o script de instalação (precisa de chmod +x). Você pode excluí-lo da pasta do projeto após a instalação.
 journal: É o programa cliente que fica na pasta journalNet (precisa de chmod +x). Inicie com ./journal -B seunomedeusuario@127.0.0.1 ou ./journal -B seunomedeusuario@your.dynamic.dns 
 journalnet: É o programa servidor, fica na pasta /usr/local/sbin/. Você pode excluí-lo da pasta do projeto após a instalação.
