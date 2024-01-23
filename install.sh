@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ################################
 # Vars                         #
@@ -62,6 +62,7 @@ EOF
 
 cp -v journalnet /usr/local/sbin/
 chmod -v +x /usr/local/sbin/journalnet
+chmod -v +x ./journal
 chmod -v +x ./banner/*.sh
 chmod -v 777 bookmarks.txt
 
