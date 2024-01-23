@@ -15,7 +15,7 @@ journal: It's the client program stays at journalNet folder (Need chmod +x). Lau
 journalnet: It's the server program, stays at /usr/local/sbin/ folder. You can delete it from the project folder after the installation.
 .journal: It's your journal file, got to stay directly at the user home folder.
 bookmarks.txt: It's your journal bookmarks file, just add or delete journals addresses in this file and relaunch the client with ./journal -b 
-banner folder (Need chmod +x in "sh" ASCII files): It's where the "sh" ASCII files are, your could add or delete ASCII Banners, just remember to "chmod +x" to make it work.
+banner folder: It's where the "sh" ASCII files are, your could add or delete ASCII Banners, just remember to "chmod +x" in "sh" ASCII files to make it work.
 readme files: Info and troubleshooting. 
 
 Dependencies
