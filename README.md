@@ -14,7 +14,7 @@ Daily journaling service
 by slackjeff
 
 # journalNet: Zines + ASCII
-Bringing back the fun times!
+Bringing back the fun!
 by slackjeff and Demogorgon
 ```
 **Instalation notes**
