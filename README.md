@@ -17,7 +17,7 @@ by slackjeff
 Bringing back the fun times!
 by slackjeff and Demogorgon
 ```
-Instalation notes:
+**Instalation notes**
 - Read the README files =)
 - Install xinetd 
 - Execute install.sh
@@ -28,7 +28,6 @@ Instalation notes:
 Files
   ___
  /___\_________
-|              |
 |              |
 |              |
 |              |
