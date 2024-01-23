@@ -62,6 +62,8 @@ EOF
 
 cp -v journalnet /usr/local/sbin/
 chmod -v +x /usr/local/sbin/journalnet
+chmod -v +x ./banner/*.sh
+chmod -v 777 bookmarks.txt
 
 printf "Restart 'xinetd' service!\n"
 printf "Don't forget to create a plain text '.journal' file in the user's home page\n"
