@@ -18,8 +18,8 @@ Bringing back the fun times!
 by slackjeff and Demogorgon
 ```
 Instalation notes:
-- Read the README files.
-- Install xinetd =)
+- Read the README files =)
+- Install xinetd 
 - Execute install.sh
 - Restart xinetd service.
 - Create file .journal on your home folder.
