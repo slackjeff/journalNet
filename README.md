@@ -22,6 +22,7 @@ by slackjeff and Demogorgon
 - Install xinetd 
 - Execute install.sh
 - Restart xinetd service.
+- Default port is tcp 2826
 - Create file .journal on your home folder.
 - Test with ./journal -B username@127.0.0.1 or ./journal -B username@your.dynamic.dns (Remove "-B" to hide the Banner).
 - To change your journal IP address edit the file /etc/xinetd.d/journalnet and restart xinetd service.  

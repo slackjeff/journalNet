@@ -80,3 +80,5 @@ seu.dynudns.org
 ```
 Para mudar o endereço IP do seu journal, edite o arquivo: sudo nano /etc/xinetd.d/journalnet  
 Em seguida, recarregue o xinetd: sudo service xinetd restart  
+
+A porta padrão é tcp 2826 e a porta de serviço pode ser alterada em /etc/services e na parte superior do cliente ./journal
