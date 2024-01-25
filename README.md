@@ -25,7 +25,7 @@ by slackjeff and Demogorgon
 - Default port is tcp 2826
 - Create file .journal on your home folder.
 - Test with ./journal -B username@127.0.0.1 or ./journal -B username@your.dynamic.dns (Remove "-B" to hide the Banner).
-- If you are in Linux Console pipe the Journal Client through more (Since the "soft scrollback" was removed from Linux Kernel 5.9) so use ./journal -B username@127.0.0.1 | more or ./journal -B username@your.dynamic.dns | more (Or use alternatives like tmux and screen).
+- If you are in Linux Console pipe the Journal Client through more and navigate with "Enter / per line" or "Space / per screen size" (Since the "soft scrollback" was removed from Linux Kernel 5.9) so use ./journal -B username@127.0.0.1 | more or ./journal -B username@your.dynamic.dns | more (Or use alternatives like tmux and screen).
 - To change your journal IP address edit the file /etc/xinetd.d/journalnet and restart xinetd service.  
 ```
 Files

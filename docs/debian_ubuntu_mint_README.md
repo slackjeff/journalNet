@@ -15,6 +15,7 @@ Files
 **bookmarks.txt**: It's your journal bookmarks file, just add or delete journals addresses in this file and relaunch the client with ./journal -b   
 **banner folder**: It's where the "sh" ASCII files are, your could add or delete ASCII Banners, just remember to "chmod +x" in "sh" ASCII files to make it work.  
 **docs folder**: Info and troubleshooting.  
+**journal_templates folder**: Templates for your .journal
 **readme file**: Basic info.  
 
 **Dependencies**
@@ -63,6 +64,8 @@ To publish your ".journal" use a Dynamic DNS Service as https://www.dynu.com/ an
 ./journal -h for help and options.
 
 echo "theaccountwherejournalis" | nc your.dynamic.dns 2826
+
+If you are in Linux Console pipe the Journal Client through more and navigate with "Enter / per line" or "Space / per screen size" (Since the "soft scrollback" was removed from Linux Kernel 5.9) so use ./journal -B username@127.0.0.1 | more or ./journal -B username@your.dynamic.dns | more (Or use alternatives like tmux and screen).
 
 ddclient https://www.dynu.com/ configuration example:
 ```
