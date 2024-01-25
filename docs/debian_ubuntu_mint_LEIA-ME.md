@@ -15,6 +15,7 @@ Arquivos
 **bookmarks.txt**: É o arquivo de favoritos do seu journal, basta adicionar ou excluir endereços de journals neste arquivo e reiniciar o cliente com ./journal -b   
 **banner folder**: É onde estão os arquivos ASCII "sh", você pode adicionar ou excluir Banners ASCII, apenas lembre de "chmod +x" em arquivos ASCII "sh" para que funcione.  
 **docs folder**: Info and troubleshooting.  
+**journal_templates folder**: Templates para o seu .journal
 **readme file**:  Informações básicas.   
 
 **Dependências**
@@ -81,4 +82,4 @@ seu.dynudns.org
 Para mudar o endereço IP do seu journal, edite o arquivo: sudo nano /etc/xinetd.d/journalnet  
 Em seguida, recarregue o xinetd: sudo service xinetd restart  
 
-A porta padrão é tcp 2826 e a porta de serviço pode ser alterada em /etc/services e na parte superior do cliente ./journal
+A porta padrão é tcp 2826. A porta de serviço pode ser alterada no fim do arquivo /etc/services e na parte superior do cliente ./journal
