@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 version='1.0'
+
 echo "JournalNet Version: $version"
 
-# A visitors counter, it read the "/var/log/journalnet.log" and count by different IP address.
-visitors_count=$(grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+" /var/log/journalnet.log | sort | uniq | wc -l)
+visitors_count=$(grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+" /var/log/journalnet.log | sort | uniq | wc -l)  
+#echo -e "This Journal received \033[1;92;5m$visitors_count\033[0m IP visitors."
 echo -e "This Journal received \033[1;37m$visitors_count\033[0m visitors."
-
+#echo empty line after the visitors counter and the first line of the journal.
 read arg
 [ -z "$arg" ] && exit 0
 if [ -d "/home/$arg" ] && [ -e "/home/$arg/.journal" ]; then
     cat /home/$arg/.journal
 else
-    echo "User not found."
+    echo "User not found."	
     exit 1
 fi
