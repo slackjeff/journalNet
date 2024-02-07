@@ -84,7 +84,7 @@ usage()
     exit 0
 }
 
-[ -z "$@" ] && usage
+[[ -z "$@" ]] && usage
 
 user="$(echo "$@" | cut -d ' ' -f 2| cut -d @ -f 1)"
 host="$(echo "$@" | cut -d @ -f 2)"
