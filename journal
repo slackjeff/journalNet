@@ -26,6 +26,14 @@ Help()
    echo "echo \"username\" | nc 127.0.0.1 2826"
 }
 
+usage()
+{
+    echo "JournalNet"
+    echo "Usage: $(basename $0) user@host.example"
+    echo "OR $(basename $0) -h for help"
+    exit 0
+}
+
 ############################################################
 # Bookmarks                                                #
 ############################################################
@@ -77,18 +85,23 @@ done
 ############################################################
 # Main program                                             #
 ############################################################
-usage()
-{
-    echo "JournalNet"
-    echo "Usage: $(basename $0) user@host.example"
-    exit 0
-}
 
+# Null?
 [[ -z "$@" ]] && usage
 
+# Arg is valid? user@example.com?
+re='[A-Za-z0-9]+@[A-Za-z0-9.]+'
+! [[ "$@" =~ $re ]] && usage
+
+############################################################
+# OK START HERE.
+############################################################
+
+# Take user and host
 user="$(echo "$@" | cut -d ' ' -f 2| cut -d @ -f 1)"
 host="$(echo "$@" | cut -d @ -f 2)"
 
+# OPEN SOCKET.
 exec 3<>/dev/tcp/$host/$port
 echo "$user" >&3
 #To test return from cut in the "$@" variable.
