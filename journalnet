@@ -6,11 +6,24 @@ echo "JournalNet Version: $version"
 visitors_count=$(grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+" /var/log/journalnet.log | sort | uniq | wc -l)  
 #echo -e "This Journal received \033[1;92;5m$visitors_count\033[0m IP visitors."
 echo -e "This Journal received \033[1;37m$visitors_count\033[0m visitors."
+ 
 #echo empty line after the visitors counter and the first line of the journal.
 read arg
+read mnickname
+read myourmessage
+read mcontact
+read cguestbook
+
 [ -z "$arg" ] && exit 0
-if [ -d "/home/$arg" ] && [ -e "/home/$arg/.journal" ]; then
-    cat /home/$arg/.journal
+if [ -n "$myourmessage" ]; then
+	echo -e "`echo Name: $mnickname` `echo '\n'``echo Contact: $mcontact` `echo '\n'``echo Message: $myourmessage` `echo '\n'``date +"%d/%m/%Y %T"``echo '\n'`" >> /var/log/journalnet_messages.log
+
+elif [ -z "$cguestbook" ]; then
+	echo -e "`echo '\n'``cat /var/log/journalnet_messages.log`" 
+
+elif [ -d "/home/$arg" ] && [ -e "/home/$arg/.journal" ]; then
+	cat /home/$arg/.journal
+
 else
     echo "User not found."	
     exit 1

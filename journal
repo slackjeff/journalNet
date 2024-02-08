@@ -10,6 +10,7 @@ Banner()
     banner="$(ls -1 ./banner/*.sh | shuf | head -1)"
     eval "$banner"
 }
+
 ############################################################
 # Help                                                     #
 ############################################################
@@ -20,6 +21,8 @@ Help()
    echo
    echo "-B     Show random ASCII Banner from banner folder."
    echo "-b     Print the addresses in bookmarks.txt file."
+   echo "-m     Write a message in the Guestbook."
+   echo "-g     Show the Guestbook."
    echo "-h     Print this Help."
    echo
    echo "Info: You can read journals with netcat:"
@@ -61,13 +64,43 @@ done
 }
 
 ############################################################
+# Message                                                  #
+############################################################
+Message()
+{
+read -p "Enter your nickname: " mnickname
+read -p "Enter your mail/journal/socialnet: " mcontact
+read -p "Enter your message: " myourmessage
+if [[ -z "$mnickname" || -z "$myourmessage" ]]; then
+    echo "Either you have not entered your nickname, or you have not entered the message."
+    exit 1
+else
+read -p "Send it (y/n)? " choice
+echo
+fi
+case "$choice" in 
+  y|Y ) ;;
+  n|N ) exit;;
+  * ) echo "Error: Invalid option.";;
+esac
+}
+
+############################################################
+# Guestbook                                                #
+############################################################
+Guestbook()
+{
+cguestbook=$cguestbook
+}
+
+############################################################
 # Process the input options. Add options as needed.        #
 ############################################################
 ################################
 # Get the options
-while getopts ":Bhb" option; do
+while getopts ":Bhbmg" option; do
    case $option in
-      B) # Disable splash
+      B) # Enable Banner
 	     Banner
          continue;;
       h) # Display Help
@@ -76,6 +109,12 @@ while getopts ":Bhb" option; do
       b) # Display Bookmarks
          Bookmarks
          exit;;
+      m) # Leave a Message
+         Message
+         continue;;
+      g) # Display Guestbook.
+         Guestbook
+         continue;;
      \?) # Invalid option
          echo "Error: Invalid option."
          exit;;
@@ -104,6 +143,10 @@ host="$(echo "$@" | cut -d @ -f 2)"
 # OPEN SOCKET.
 exec 3<>/dev/tcp/$host/$port
 echo "$user" >&3
+echo "$mnickname" >&3
+echo "$myourmessage" >&3
+echo "$mcontact" >&3
+echo "$cguestbook" >&3
 #To test return from cut in the "$@" variable.
 #echo "$user"
 cat <&3
