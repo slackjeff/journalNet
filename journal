@@ -6,9 +6,9 @@ port=2826
 ############################################################
 Banner()
 {
-clear
-banner="$(ls -1 ./banner/*.sh | shuf | head -1)"
-eval "$banner"  
+    clear
+    banner="$(ls -1 ./banner/*.sh | shuf | head -1)"
+    eval "$banner"
 }
 ############################################################
 # Help                                                     #
@@ -23,8 +23,15 @@ Help()
    echo "-h     Print this Help."
    echo
    echo "Info: You can read journals with netcat:"
-   echo "echo \"username\" | nc 127.0.0.1 2826" 
+   echo "echo \"username\" | nc 127.0.0.1 2826"
+}
 
+usage()
+{
+    echo "JournalNet"
+    echo "Usage: $(basename $0) user@host.example"
+    echo "OR $(basename $0) -h for help"
+    exit 0
 }
 
 ############################################################
@@ -36,14 +43,18 @@ Bookmarks()
    echo "Bookmark List"
    readarray -t Bookmarks < bookmarks.txt
 
-PS3='Please enter your choice or 0 to exit: '
-select selection in "${Bookmarks[@]}"; do
+    PS3='Please enter your choice or 0 to exit: '
+    select selection in "${Bookmarks[@]}"; do
     if [[ $REPLY == "0" ]]; then
         echo -e '\033[1;30mHasta la vista, Baby!\033[0m' >&2
         exit
     else
-        ./journal $selection
-#If you copied the journalNet client (./journal) to /usr/bin just change the line above from "./journal" to "journal"        
+        # modify the way the program is called
+        if [[ -e /usr/bin/journal ]]; then
+            journal $selection
+        else
+            ./journal $selection
+        fi
         break
     fi
 done
@@ -74,18 +85,23 @@ done
 ############################################################
 # Main program                                             #
 ############################################################
-usage()
-{
-    echo "JournalNet"
-    echo "Usage: $(basename $0) user@host.example"
-    exit 0
-}
 
+# Null?
 [[ -z "$@" ]] && usage
 
+# Arg is valid? user@example.com?
+re='[A-Za-z0-9]+@[A-Za-z0-9.]+'
+! [[ "$@" =~ $re ]] && usage
+
+############################################################
+# OK START HERE.
+############################################################
+
+# Take user and host
 user="$(echo "$@" | cut -d ' ' -f 2| cut -d @ -f 1)"
 host="$(echo "$@" | cut -d @ -f 2)"
 
+# OPEN SOCKET.
 exec 3<>/dev/tcp/$host/$port
 echo "$user" >&3
 #To test return from cut in the "$@" variable.

@@ -49,4 +49,8 @@ Files
 
 _Made by slackjeff sorcery with Demogorgon's scratches and dents._  
 
+## Contribuitors THKS ❤
 
+<a href = "https://github.com/slackjeff/web/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=slackjeff/journalNet"/>
+</a>
