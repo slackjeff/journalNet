@@ -15,6 +15,7 @@ read mcontact
 read guestbook
 
 [ -z "$arg" ] && exit 0
+
 if [ -n "$mmessage" ]; then
 	echo -e "`echo Name: $mnickname` `echo '\n'``echo Contact: $mcontact` `echo '\n'``echo Message: $mmessage` `echo '\n'``date +"%d/%m/%Y %T"``echo '\n'`" >> /var/log/journalnet_messages.log
 
