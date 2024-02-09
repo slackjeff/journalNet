@@ -68,6 +68,7 @@ done
 ############################################################
 Message()
 {
+echo "Messenger"    
 read -p "Enter your nickname: " mnickname
 read -p "Enter your mail/journal/socialnet: " mcontact
 read -p "Enter your message: " mmessage
