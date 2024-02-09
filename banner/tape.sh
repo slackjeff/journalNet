@@ -9,4 +9,5 @@ echo -e '    | A                      |  TAKE / ME / ON               '
 echo -e '    |    ________________    |                 '            
 echo -e '    |___/_._o________o_._\___|                 '
 echo -e '    \033[1;30mwtx\033[0m'
+echo -e ''
 #ASCII ART By wtx                                                     
