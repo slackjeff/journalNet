@@ -70,8 +70,8 @@ Message()
 {
 read -p "Enter your nickname: " mnickname
 read -p "Enter your mail/journal/socialnet: " mcontact
-read -p "Enter your message: " myourmessage
-if [[ -z "$mnickname" || -z "$myourmessage" ]]; then
+read -p "Enter your message: " mmessage
+if [[ -z "$mnickname" || -z "$mmessage" ]]; then
     echo "Either you have not entered your nickname, or you have not entered the message."
     exit 1
 else
@@ -90,7 +90,7 @@ esac
 ############################################################
 Guestbook()
 {
-cguestbook=$cguestbook
+guestbook=$guestbook
 }
 
 ############################################################
@@ -144,9 +144,9 @@ host="$(echo "$@" | cut -d @ -f 2)"
 exec 3<>/dev/tcp/$host/$port
 echo "$user" >&3
 echo "$mnickname" >&3
-echo "$myourmessage" >&3
+echo "$mmessage" >&3
 echo "$mcontact" >&3
-echo "$cguestbook" >&3
+echo "$guestbook" >&3
 #To test return from cut in the "$@" variable.
 #echo "$user"
 cat <&3
