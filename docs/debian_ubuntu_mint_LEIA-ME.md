@@ -63,7 +63,7 @@ Para publicar seu "journal" use um serviço DNS dinâmico como https://www.dynu.
 
 ./journal -h para ajuda e opções.
 
-Leia os journals com o netcat (Testado com o OpenBSD netcat)
+Leia os ".journal's" com o netcat (Testado com o OpenBSD netcat)
 
 echo "acontaondeojournalesta" | nc -N seu.dns.dinâmico 2826
 

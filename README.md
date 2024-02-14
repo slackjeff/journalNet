@@ -19,11 +19,11 @@ by slackjeff and Demogorgon
 ```
 **Instalation notes**
 - Read the README files =)
-- Install xinetd 
+- Install xinetd.
 - Execute install.sh
 - Restart xinetd service.
 - Default port is tcp 2826
-- Create file .journal on your home folder.
+- Create file .journal inside a user home folder or copy a template and rename it to .journal
 - Read client options ./journal -h
 - Test with ./journal -B username@127.0.0.1 or ./journal -B username@your.dynamic.dns  
   (Remove "-B" to hide the Banner).  
