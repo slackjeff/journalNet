@@ -25,8 +25,9 @@ Help()
    echo "-g     Show the Guestbook."
    echo "-h     Print this Help."
    echo
- #  echo "Info: You can read journals with netcat:"
- #  echo "echo \"username\" | nc 127.0.0.1 2826"
+   echo "Info: You can read journals with netcat:"
+   echo "echo \"username\" | nc -N 127.0.0.1 2826"
+   echo "echo \"username\" | nc -q 0 127.0.0.1 2826"
 }
 
 usage()

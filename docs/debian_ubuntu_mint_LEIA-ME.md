@@ -63,7 +63,15 @@ Para publicar seu "journal" use um serviço DNS dinâmico como https://www.dynu.
 
 ./journal -h para ajuda e opções.
 
-echo "acontaondeojournalesta" | nc seu.dns.dinâmico 2826
+Leia os journals com o netcat (Testado com o OpenBSD netcat)
+
+echo "acontaondeojournalesta" | nc -N seu.dns.dinâmico 2826
+
+echo "acontaondeojournalesta" | nc -q 0 seu.dns.dinâmico 2826
+
+Direto no Console Linux (Que perdeu a função "soft scrollback")
+
+Se você estiver no console Linux, pipe o Journal Client através do less "-r" para colorir o banner e ":q" para sair (já que o "soft scrollback" foi removido do Linux Kernel 5.9), então use ./journal -B nomedeusuario@127.0.0.1 | less -r ou ./journal -B nomedeusuario@your.dynamic.dns | less -r (ou use alternativas como tmux e screen).
 
 Se você estiver no console Linux, pipe o Journal Client através do more e navegue no .journal com "Enter / por linha" ou "Espaço / por tamanho de tela" (Já que o "soft scrollback" foi removido do Linux Kernel 5.9), então use ./journal -B nomedeusuario@127.0.0.1 | more ou ./journal -B nomedeusuario@your.dynamic.dns | more (ou use alternativas como tmux e screen).
 
