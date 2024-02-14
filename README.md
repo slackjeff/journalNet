@@ -26,7 +26,7 @@ by slackjeff and Demogorgon
 - Create file .journal on your home folder.
 - Read client options ./journal -h
 - Test with ./journal -B username@127.0.0.1 or ./journal -B username@your.dynamic.dns  
-- (Remove "-B" to hide the Banner).  
+  (Remove "-B" to hide the Banner).  
 - You can read journals with netcat (Tested with OpenBSD netcat):  
 echo "username" | nc -N 127.0.0.1 2826 or echo "username" | nc -N your.dynamic.dns 2826    
 echo "username" | nc -q 0 127.0.0.1 2826 or echo "username" | nc -q 0 your.dynamic.dns 2826  
