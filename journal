@@ -83,7 +83,7 @@ fi
 case "$choice" in 
   y|Y ) ;;
   n|N ) exit;;
-  * ) echo "Error: Invalid option.";;
+  * ) echo "Error: Invalid option." && exit 1;;
 esac
 }
 
