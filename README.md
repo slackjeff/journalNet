@@ -19,15 +19,18 @@ by slackjeff and Demogorgon
 ```
 **Instalation notes**
 - Read the README files =)
-- Install xinetd 
+- Install xinetd.
 - Execute install.sh
 - Restart xinetd service.
 - Default port is tcp 2826
-- Create file .journal on your home folder.
-- Test with ./journal -B username@127.0.0.1 or ./journal -B username@your.dynamic.dns (Remove "-B" to hide the Banner).
-- If you are in Linux Console pipe the Journal Client through less "-r" to colorize the Banner and ":q" to exit (Since the "soft scrollback" was removed from Linux Kernel 5.9) so use ./journal -B username@127.0.0.1 | less -r or ./journal -B username@your.dynamic.dns | less -r (Or use alternatives like tmux and screen).
-- If you are in Linux Console pipe the Journal Client through more and navigate with "Enter / per line" or "Space / per screen size" (Since the "soft scrollback" was removed from Linux Kernel 5.9) so use ./journal -B username@127.0.0.1 | more or ./journal -B username@your.dynamic.dns | more (Or use alternatives like tmux and screen).
-- To change your journal IP address edit the file /etc/xinetd.d/journalnet and restart xinetd service.  
+- Create file .journal inside a user home folder or copy a template and rename it to .journal
+- Read client options ./journal -h
+- Test with ./journal -B username@127.0.0.1 or ./journal -B username@your.dynamic.dns  
+  (Remove "-B" to hide the Banner).  
+- You can read ".journal's" with netcat (Tested with OpenBSD netcat):  
+echo "username" | nc -N 127.0.0.1 2826 or echo "username" | nc -N your.dynamic.dns 2826    
+echo "username" | nc -q 0 127.0.0.1 2826 or echo "username" | nc -q 0 your.dynamic.dns 2826  
+  
 ```
 Files
   ___

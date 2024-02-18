@@ -17,10 +17,10 @@ read guestbook
 [ -z "$arg" ] && exit 0
 
 if [ -n "$mmessage" ]; then
-	echo -e "`echo Name: $mnickname` `echo '\n'``echo Contact: $mcontact` `echo '\n'``echo Message: $mmessage` `echo '\n'``date +"%d/%m/%Y %T"``echo '\n'`" >> /var/log/journalnet_messages.log
+	echo -e "$(echo Name: $mnickname) $(echo '\n')$(echo Contact: $mcontact) $(echo '\n')$(echo Message: $mmessage) $(echo '\n')$(date +"%d/%m/%Y %T")$(echo '\n')" >> /var/log/journalnet_messages.log
 
 elif [ -n "$guestbook" ]; then
-	echo -e "`echo '\n'``cat /var/log/journalnet_messages.log`" 
+	echo -e "$(echo '\n')$(cat /var/log/journalnet_messages.log)" 
 
 elif [ -d "/home/$arg" ] && [ -e "/home/$arg/.journal" ]; then
 	cat /home/$arg/.journal
