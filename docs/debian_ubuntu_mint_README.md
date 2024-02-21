@@ -15,8 +15,9 @@ Files
 **bookmarks.txt**: It's your journal bookmarks file, just add or delete journals addresses in this file and relaunch the client with ./journal -b   
 **banner folder**: It's where the "sh" ASCII files are, your could add or delete ASCII Banners, just remember to "chmod +x" in "sh" ASCII files to make it work.  
 **docs folder**: Info and troubleshooting.  
-**journal_templates folder**: Templates for your .journal
-**readme file**: Basic info.  
+**journal_templates folder**: Templates for your .journal  
+**readme file**: Basic info.    
+**log files**: There's two log files, the server and visitors counter log, in /var/log/journalnet.log and the Guestbook file in /var/log/journalnet_messages.log  
 
 **Dependencies**
 
