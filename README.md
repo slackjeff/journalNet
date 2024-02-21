@@ -49,7 +49,7 @@ Files
 **docs folder**: Info and troubleshooting.  
 **journal_templates folder**: Templates for your .journal  
 **readme file**: Basic info.  
-**log files**: There's two log files, the server and visitors counter log, in /var/log/journalnet.log and the Guestbook file in /var/log/journalnet_messages.log  
+**log files**: There's two log files, the server and visitors counter log in /var/log/journalnet.log and the Guestbook file in /var/log/journalnet_messages.log  
 
 _Made by slackjeff sorcery with Demogorgon's scratches and dents._  
 
