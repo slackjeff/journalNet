@@ -17,24 +17,28 @@ Banner()
 Help()
 {
    # Display Help
+   echo "Usage: $(basename $0) user@host.example"
+   echo ""
    echo "journalNet Client Options:"
-   echo
    echo "-B     Show random ASCII Banner from banner folder."
    echo "-b     Print the addresses in bookmarks.txt file."
    echo "-m     Write a message in the Guestbook."
    echo "-g     Show the Guestbook."
-   echo "-h     Print this Help."
-   echo
+   echo "-h     Print this help."
+   echo ""
    echo "Info: You can read journals with netcat:"
-   echo "echo \"username\" | nc -N 127.0.0.1 2826"
-   echo "echo \"username\" | nc -q 0 127.0.0.1 2826"
+   echo "echo \"user\" | nc -N 127.0.0.1 2826"
+   echo "echo \"user\" | nc -q 0 127.0.0.1 2826"
+   exit 0
 }
 
-usage()
+Usage()
 {
-    echo "JournalNet"
+    echo "journalNet Client"
     echo "Usage: $(basename $0) user@host.example"
-    echo "OR $(basename $0) -h for help"
+    echo "       $(basename $0) -g user@host.example to read the Guestbook."
+    echo "       $(basename $0) -m user@host.example to write a message in the Guestbook."
+    echo "       $(basename $0) -h for help."
     exit 0
 }
 
@@ -45,19 +49,23 @@ Bookmarks()
 {
    # Display Bookmarks
    echo "Bookmark List"
-   readarray -t Bookmarks < bookmarks.txt
-
-    PS3='Please enter your choice or 0 to exit: '
-    select selection in "${Bookmarks[@]}"; do
+   echo ""
+   readarray -t Bookmarks < bookmarks.txt   
+    PS3=$'\n'"Please enter your choice or 0 to exit: "   
+    select selection in "${Bookmarks[@]}"; do 
     if [[ $REPLY == "0" ]]; then
-        echo -e '\033[1;30mHasta la vista, Baby!\033[0m' >&2
+        echo -e "\033[1;30mHasta la vista, Baby!\033[0m" >&2
         exit
     else
-        # modify the way the program is called
+        # Modify the way the program is called
         if [[ -e /usr/bin/journal ]]; then
+            echo ""
             journal $selection
+            echo ""
         else
-            ./journal $selection
+            echo ""
+           ./journal $selection
+            echo ""
         fi
         break
     fi
@@ -78,7 +86,7 @@ if [[ -z "$mnickname" || -z "$mmessage" ]]; then
     exit 1
 else
 read -p "Send it (y/n)? " choice
-echo
+echo ""
 fi
 case "$choice" in 
   y|Y ) ;;
@@ -92,7 +100,7 @@ esac
 ############################################################
 Guestbook()
 {
-guestbook="${guestbook:=default}"
+guestbook="${guestbook:=journalclient}"
 }
 
 ############################################################
@@ -105,18 +113,18 @@ while getopts ":Bhbmg" option; do
       B) # Enable Banner
 	     Banner
          continue;;
-      h) # Display Help
-         Help
-         exit;;
       b) # Display Bookmarks
          Bookmarks
          exit;;
-      m) # Leave a Message
-         Message
-         continue;;
       g) # Display Guestbook.
          Guestbook
          continue;;
+      m) # Leave a Message
+         Message
+         continue;;
+      h) # Display Help
+         Help
+         exit;;
      \?) # Invalid option
          echo "Error: Invalid option."
          exit;;
@@ -128,11 +136,11 @@ done
 ############################################################
 
 # Null?
-[[ -z "$@" ]] && usage
+[[ -z "$@" ]] && Usage
 
 # Arg is valid? user@example.com?
 re='[A-Za-z0-9]+@[A-Za-z0-9.]+'
-! [[ "$@" =~ $re ]] && usage
+! [[ "$@" =~ $re ]] && Usage
 
 ############################################################
 # OK START HERE.

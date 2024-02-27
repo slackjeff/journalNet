@@ -17,6 +17,7 @@ Arquivos
 **docs folder**: Info and troubleshooting.  
 **journal_templates folder**: Templates para o seu .journal
 **readme file**:  Informações básicas.   
+**log files**: Há dois arquivos de log, o log do servidor e do contador de visitantes em /var/log/journalnet.log e o arquivo Guestbook em /var/log/journalnet_messages.log   
 
 **Dependências**
 
