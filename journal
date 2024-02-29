@@ -60,11 +60,11 @@ Bookmarks()
         # Modify the way the program is called
         if [[ -e /usr/bin/journal ]]; then
             echo ""
-            journal $selection
+            journal "$selection"
             echo ""
         else
             echo ""
-           ./journal $selection
+           ./journal "$selection"
             echo ""
         fi
         break
@@ -108,7 +108,7 @@ guestbook="${guestbook:=journalclient}"
 ############################################################
 # Get the options
 while getopts ":Bhbmg" option; do
-   case $option in
+   case "$option" in
       B) # Enable Banner
 	     Banner
          continue;;
@@ -137,7 +137,7 @@ done
 [[ -z "$@" ]] && Usage
 
 # Arg is valid? user@example.com?
-re='[A-Za-z0-9]+@[A-Za-z0-9.]+'
+re="[A-Za-z0-9]+@[A-Za-z0-9.]+"
 ! [[ "$@" =~ $re ]] && Usage
 
 ############################################################
