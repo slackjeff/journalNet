@@ -2,7 +2,7 @@
 port=2826
 
 ############################################################
-# Print Banner.                                            #
+# Print banner.                                            #
 ############################################################
 Banner()
 {
@@ -60,11 +60,11 @@ Bookmarks()
         # Modify the way the program is called
         if [[ -e /usr/bin/journal ]]; then
             echo ""
-            journal $selection
+            journal "$selection"
             echo ""
         else
             echo ""
-           ./journal $selection
+           ./journal "$selection"
             echo ""
         fi
         break
@@ -73,7 +73,7 @@ done
 }
 
 ############################################################
-# Message                                                  #
+# Leave a message.                                         #
 ############################################################
 Message()
 {
@@ -106,10 +106,9 @@ guestbook="${guestbook:=journalclient}"
 ############################################################
 # Process the input options. Add options as needed.        #
 ############################################################
-################################
 # Get the options
 while getopts ":Bhbmg" option; do
-   case $option in
+   case "$option" in
       B) # Enable Banner
 	     Banner
          continue;;
@@ -134,23 +133,21 @@ done
 ############################################################
 # Main program                                             #
 ############################################################
-
 # Null?
 [[ -z "$@" ]] && Usage
 
 # Arg is valid? user@example.com?
-re='[A-Za-z0-9]+@[A-Za-z0-9.]+'
+re="[A-Za-z0-9]+@[A-Za-z0-9.]+"
 ! [[ "$@" =~ $re ]] && Usage
 
 ############################################################
-# OK START HERE.
+# 0k. Start here.                                          #
 ############################################################
-
-# Take user and host
+# Take user and host.
 user="$(echo "$@" | cut -d ' ' -f 2| cut -d @ -f 1)"
 host="$(echo "$@" | cut -d @ -f 2)"
 
-# OPEN SOCKET.
+# Open socket.
 exec 3<>/dev/tcp/$host/$port
 echo "$user" >&3
 echo "$mnickname" >&3

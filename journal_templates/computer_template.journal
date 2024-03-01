@@ -50,8 +50,8 @@ Terminator: Chill out, dickwad.
 |                                                                 _     |
 |                               Shell                         __ [_] X  |
 |-----------------------------------------------------------------------|
-|t-800@skynet:~$ cd /home/                                             ||
-|t-800@skynet:~$ printf "It's Tha Bomb! \n:)" >> /home/dickwad.txt     ||
+|t-800@skynet:~$ cd /home/skynet/                                      ||
+|t-800@skynet:~$ printf "It's Tha Bomb! \n:)" >> dickwad.txt           ||
 |t-800@skynet:~$ :(){ :|:& };:                                         ||
 |t-800@skynet:~$ Connection closed by remote host                      ||
 |______________________________________________________________________||
