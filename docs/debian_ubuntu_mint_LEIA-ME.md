@@ -13,7 +13,7 @@ Arquivos
 **journalnet**: É o programa servidor, fica na pasta /usr/local/sbin/. Você pode excluí-lo da pasta do projeto após a instalação.  
 **.journal**: É o seu arquivo journal, deve ficar diretamente na pasta home do usuário.  
 **bookmarks.txt**: É o arquivo de favoritos do seu journal, basta adicionar ou excluir endereços de journals neste arquivo e reiniciar o cliente com ./journal -b   
-**banner folder**: É onde estão os arquivos ASCII "sh", você pode adicionar ou excluir Banners ASCII, apenas lembre de "chmod +x" em arquivos ASCII "sh" para que funcione.  
+**banner folder**: É onde estão os arquivos ASCII ".sh", você pode adicionar ou excluir Banners ASCII, apenas lembre de "chmod +x" em arquivos ASCII "sh" para que funcione.  
 **docs folder**: Info and troubleshooting.  
 **journal_templates folder**: Templates para o seu .journal
 **readme file**:  Informações básicas.   
