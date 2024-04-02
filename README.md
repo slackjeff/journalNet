@@ -26,7 +26,10 @@ by slackjeff and Demogorgon
 - Create file .journal inside a user home folder or copy a template and rename it to .journal
 - Read client options ./journal -h
 - Test with ./journal -B username@127.0.0.1 or ./journal -B username@your.dynamic.dns  
-  (Remove "-B" to hide the Banner).  
+  (Remove "-B" to hide the Banner).
+- In the Console pipe the Journal Client through less "-r" to scroll the ".journal" and colorize the Banner:  
+./journal -B username@127.0.0.1 | less -r or ./journal -B username@your.dynamic.dns | less -r    
+Tip:  Press ":q" to exit (Or use alternatives like tmux and screen). 
 - You can read ".journal's" with netcat (Tested with OpenBSD netcat):  
 echo "username" | nc -N 127.0.0.1 2826 or echo "username" | nc -N your.dynamic.dns 2826    
 echo "username" | nc -q 0 127.0.0.1 2826 or echo "username" | nc -q 0 your.dynamic.dns 2826  
