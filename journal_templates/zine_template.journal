@@ -1,0 +1,87 @@
+
+                   [ VaporHole: Slow like real life ]
+              .___    .______ ._______._______ .______  
+              |   |___:      \: ____  : .___  \: __   \ 
+              |   |   |   .   |    :  | :   |  |  \____|
+              |   :   |   :   |   |___|     :  |   :  \ 
+               \      |___|   |___|    \_. ___/|   |___\
+   ---===[      \____/    |___           :/    |___|          ]===---
+     ---===[       .___.__ ._______ .___   ._______         ]===---
+   ---===[         :   |  \: .___  \|   |  : .____/           ]===---
+                   |   :   | :   |  |   |  | : _/\      
+                   |   .   |     :  |   |/\|   /  \   (   
+                   |___|    \_. ___/|   /  |_.: __/   )\ 
+                       |___   :/    |______   :/     ((_)   
+                              :                         
+                                        
+                         https://vaporhole.xyz/
+
+                           - Ed #1 12/2023 -
+
+=========================================================================
+                                INTRO                         
+-------------------------------------------------------------------------
+
+Vaporhole is a social network for technology lovers. 
+We have a shared NIX* server where members connect through SSH. 
+Explore, socialize, program and have fun with the others, all in one server!
+VH was inspired by SDF and tildes. It's designed on and off by slackjeff and devnull.
+
+                          [TABLE OF CONTENTS]
+
+(#!). ASCII Art, Ed. Slogan, General Info.
+(00). Introduction - by slackjeff *The Sorcerer* (Keep it simple, stupid!)
+(01). CLI tools and hacks to automate things - [slackjeff]
+(02). CTF's and Wargames - [devnull]
+(03). Have your own GopherHole - [slackjeff] 
+(04). How to make a Zine with journalNet - [Demogorgon]
+(05). IRC crazy stories - [k4aus]
+(06). Screwing around with BSD jails - [slackjeff] 
+(07). SBC with a Microprocessor or Microcontroller Board - [buzz]
+(08). Arcade controllers - [voidx]
+(09). BitchX never dies! Tips and tricks - [Demogorgon]
+(10). A global network of electronic spy stations (Watch your back) - [echelon]
+
+:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-::-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:
+: VaporHole:/$ ssh -p 7990 username@vaporhole.xyz -i ~/.ssh/username_rsa :
+:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-::-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:
+ ____________
+| |        | |
+| |   01   | |
+| |________| |
+|   ______   |
+|  |    | |  |
+|__|____|_|__|
+
+CLI tools and hacks to automate things - [slackjeff]
+
+ ____________
+| |        | |
+| |   02   | |
+| |________| |
+|   ______   |
+|  |    | |  |
+|__|____|_|__|
+
+CTF's and Wargames - [devnull] 
+
+ ____________
+| |        | |
+| |   03   | |
+| |________| |
+|   ______   |
+|  |    | |  |
+|__|____|_|__|
+
+Have your own GopherHole - [slackjeff] 
+
+ _______________________________________________________________________
+|                                                                 _     |
+|                               Shell                         __ [_] X  |
+|-----------------------------------------------------------------------|
+|t-800@skynet:~$ cd /home/skynet/                                      ||
+|t-800@skynet:~$ printf "It's Tha Bomb! \n:)" >> dickwad.txt           ||
+|t-800@skynet:~$ :(){ :|:& };:                                         ||
+|t-800@skynet:~$ Connection closed by remote host                      ||
+|______________________________________________________________________||
+

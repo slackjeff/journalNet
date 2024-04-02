@@ -47,29 +47,41 @@ Usage()
 ############################################################
 Bookmarks()
 {
-   # Display Bookmarks
-   echo "Bookmark List"
-   echo ""
-   readarray -t Bookmarks < bookmarks.txt   
-    PS3=$'\n'"Please enter your choice or 0 to exit: "   
-    select selection in "${Bookmarks[@]}"; do 
-    if [[ $REPLY == "0" ]]; then
-        echo -e "\033[1;30mHasta la vista, Baby!\033[0m" >&2
-        exit
-    else
-        # Modify the way the program is called
-        if [[ -e /usr/bin/journal ]]; then
-            echo ""
-            journal "$selection"
+    # Display Bookmarks
+    echo "Bookmark List"
+    echo ""
+    BFILENAME="bookmarks.txt"
+    while IFS= read -r BLINE || [[ -n "$BLINE" ]]; do
+        bhostname=$(echo $BLINE | cut -d"@" -f 2)
+        blistname=$(echo $BLINE | cut -d"@" -f 1)
+        if ping -c 1 -W 1 $bhostname >/dev/null 2>&1; then
+            echo -e "$blistname [\033[0;32mHost Online\033[0m]"
             echo ""
         else
-            echo ""
-           ./journal "$selection"
+            echo -e "$blistname [\033[0;31mPing OFF\033[0m]"
             echo ""
         fi
-        break
-    fi
-done
+    done <"$BFILENAME"
+    readarray -t Bookmarks < bookmarks.txt
+    PS3=$'\n'"Enter your choice or 0 to exit: "
+    select selection in "${Bookmarks[@]}"; do
+        if [[ $REPLY == "0" ]]; then
+            echo -e "\033[1;30mHasta la vista, Baby!\033[0m" >&2
+            exit
+        else
+            # Modify the way the program is called
+            if [[ -e /usr/bin/journal ]]; then
+                echo ""
+                timeout 3 journal "$selection"
+                #echo ""
+            else
+                echo ""
+                timeout 3 ./journal "$selection"
+                #echo ""
+            fi
+            break
+        fi
+    done
 }
 
 ############################################################
