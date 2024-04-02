@@ -17,7 +17,7 @@ by slackjeff
 Bring back the fun!
 by slackjeff and Demogorgon
 ```
-**Instalation notes**
+**Installation notes**
 - Read the README files =)
 - Install xinetd.
 - Execute install.sh
