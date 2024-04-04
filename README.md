@@ -7,7 +7,7 @@
 `._|=|__.'|___| |.'  |___|=|_.'        `.|                                                     
   _    _    _                 _    _    _
  _\"-._\"-._\"-._ journalNet _\"-._\"-._\"-._
-                                        
+                                       
 # journalNet
 Daily journaling service
 by slackjeff
