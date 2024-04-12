@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 version='1.0'
 
-echo "journalNet Version: $version"
+echo "journalNet version $version"
 
 visitors_count=$(grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+" /var/log/journalnet.log | sort | uniq | wc -l)  
 #echo -e "This journal received \033[1;92;5m$visitors_count\033[0m IP visitors."
