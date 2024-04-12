@@ -11,6 +11,7 @@ Arquivos
 **install.sh**: É o script de instalação (precisa de chmod +x). Você pode excluí-lo da pasta do projeto após a instalação.  
 **journal**: É o programa cliente que fica na pasta journalNet (precisa de chmod +x). Inicie com ./journal -B seunomedeusuario@127.0.0.1 ou ./journal -B seunomedeusuario@your.dynamic.dns    
 **journalnet**: É o programa servidor, fica na pasta /usr/local/sbin/. Você pode excluí-lo da pasta do projeto após a instalação.  
+**xinetd**: Controla o serviço journalnet (service xinetd start | stop).  
 **.journal**: É o seu arquivo journal, deve ficar diretamente na pasta home do usuário.  
 **bookmarks.txt**: É o arquivo de favoritos do seu journal, basta adicionar ou excluir endereços de journals neste arquivo e reiniciar o cliente com ./journal -b   
 **banner folder**: É onde estão os arquivos ASCII ".sh", você pode adicionar ou excluir Banners ASCII, apenas lembre de "chmod +x" em arquivos ASCII "sh" para que funcione.  
