@@ -11,6 +11,7 @@ Files
 **install.sh**: It's the installation script (Need chmod +x). You can delete it from the project folder after the installation.  
 **journal**: It's the client program stays at journalNet folder (Need chmod +x). Launch with ./journal -B yourusername@127.0.0.1 or ./journal -B yourusername@your.dynamic.dns   
 **journalnet**: It's the server program, stays at /usr/local/sbin/ folder. You can delete it from the project folder after the installation.  
+**xinetd**: Controls the journalnet service (service xinetd start | stop).  
 **.journal**: It's your journal file, got to stay directly at the user home folder.  
 **bookmarks.txt**: It's your journal bookmarks file, just add or delete journals addresses in this file and relaunch the client with ./journal -b   
 **banner folder**: It's where the ".sh" ASCII files are, you could add or delete ASCII Banners, just remember to "chmod +x" in "sh" ASCII files to make it work.  
