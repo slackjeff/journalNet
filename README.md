@@ -48,7 +48,7 @@ Files
 **xinetd**: Controls the journalnet service (service xinetd start | stop).     
 **.journal**: It's your journal file, got to stay directly at the user home folder.  
 **bookmarks.txt**: It's your journal bookmarks file, just add or delete journals addresses in this file and relaunch the client with ./journal -b  
-Note: Remove blank spaces after the end of the lines in bookmarks.txt  
+Note: Remove blank spaces after the end of addresses lines in bookmarks.txt  
 **banner folder**: It's where the ".sh" ASCII files are, you could add or delete ASCII Banners, just remember to "chmod +x" to make it work.  
 **docs folder**: Info and troubleshooting.  
 **journal_templates folder**: Templates for your .journal  
