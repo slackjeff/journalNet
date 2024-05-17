@@ -47,41 +47,58 @@ Usage()
 ############################################################
 Bookmarks()
 {
+    # Remove all leading and trailing spaces from each line, it also removes blank lines.
+    sed -i 's/^[[:blank:]]*//;s/[[:blank:]]*$//;/^\s*$/d' bookmarks.txt
     # Display Bookmarks
+    BOOKMARKS_ADDR_FILE="bookmarks.txt"
+    # Function to ping hosts and return status.
+    ping_host() {
+    local host=$1
+    bhostname=$(echo $host | cut -d"@" -f 2)
+    ping -c 1 -W 1 "$bhostname" > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        echo -e "[\033[0;32mHost Online\033[0m]"
+    else
+        echo -e "[\033[0;31mPing OFF\033[0m]"
+    fi
+    }
+    # Check if the file exists.
+    if [ ! -f "$BOOKMARKS_ADDR_FILE" ]; then
+         echo -e "Error: The file $BOOKMARKS_ADDR_FILE does not exist."
+    exit 1
+    fi
+    # Read journal's addresses from the file into an array.
+    readarray -t bookmark_addrs < "$BOOKMARKS_ADDR_FILE"
+    # Clear the screen.
+    clear
+    # Display menu and ping status.
     echo "Bookmark List"
     echo ""
-    BFILENAME="bookmarks.txt"
-    while IFS= read -r BLINE || [[ -n "$BLINE" ]]; do
-        bhostname=$(echo $BLINE | cut -d"@" -f 2)
-        blistname=$(echo $BLINE | cut -d"@" -f 1)
-        if ping -c 1 -W 1 $bhostname >/dev/null 2>&1; then
-            echo -e "$blistname [\033[0;32mHost Online\033[0m]"
-            echo ""
-        else
-            echo -e "$blistname [\033[0;31mPing OFF\033[0m]"
-            echo ""
-        fi
-    done <"$BFILENAME"
-    readarray -t Bookmarks < bookmarks.txt
-    PS3=$'\n'"Enter your choice or 0 to exit: "
-    select selection in "${Bookmarks[@]}"; do
-        if [[ $REPLY == "0" ]]; then
-            echo -e "\033[0;90mHasta la vista, \033[1;90mBaby!\033[0m" >&2
-            exit
-        else
-            # Modify the way the program is called
-            if [[ -e /usr/bin/journal ]]; then
-                echo ""
-                timeout 3 journal "$selection"
-                #echo ""
-            else
-                echo ""
-                timeout 3 ./journal "$selection"
-                #echo ""
-            fi
-            break
-        fi
+    for i in "${!bookmark_addrs[@]}"; do
+    	echo "$(($i + 1))) ${bookmark_addrs[$i]} - $(ping_host ${bookmark_addrs[$i]})"
     done
+    # Prompt user for a choice.
+    echo ""
+    read -p "Enter your choice [1-$((${#bookmark_addrs[@]}))] or 0 to exit: " choice
+    # Process user choice.
+    case $choice in
+    0)
+    echo -e "\033[0;90mHasta la vista, \033[1;90mBaby!\033[0m" >&2
+    exit 0
+    ;;
+    [1-9]|[1-9][0-9]|${#bookmark_addrs[@]})
+    if [ "$choice" -le "${#bookmark_addrs[@]}" ] && [[ -e /usr/bin/journal ]]; then
+    bookmark_addr=${bookmark_addrs[$(($choice - 1))]}
+    	timeout 3 journal "${bookmark_addr##* }"
+    else
+    bookmark_addr=${bookmark_addrs[$(($choice - 1))]}
+    	timeout 3 ./journal "${bookmark_addr##* }"
+    fi
+    ;;
+    *)
+    echo "Invalid option. Please try again."
+    ;;
+    esac
 }
 
 ############################################################
@@ -158,7 +175,7 @@ re="[A-Za-z0-9]+@[A-Za-z0-9.]+"
 # Take user and host.
 user="$(echo "$@" | cut -d ' ' -f 2| cut -d @ -f 1)"
 host="$(echo "$@" | cut -d @ -f 2)"
-
+echo "Connecting to $user@$host..."
 # Open socket.
 exec 3<>/dev/tcp/$host/$port
 echo "$user" >&3
@@ -166,6 +183,4 @@ echo "$mnickname" >&3
 echo "$mmessage" >&3
 echo "$mcontact" >&3
 echo "$guestbook" >&3
-#To test return from cut in the "$@" variable.
-#echo "$user"
 cat <&3
