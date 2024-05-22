@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 echo -e '\033[0m'
 echo -e '\033[1;37m*                                     '
 echo -e ' \033[1;33m(\.          \033[1;33m./)                     ' 

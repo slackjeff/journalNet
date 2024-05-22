@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 port=2826
 
 ############################################################
@@ -7,7 +7,7 @@ port=2826
 Banner()
 {
     clear
-    banner="$(ls -1 ./banner/*.sh | shuf | head -1)"
+    banner="$(ls -1 ./banner/*.sh | sort -R | head -1)"
     eval "$banner"
 }
 

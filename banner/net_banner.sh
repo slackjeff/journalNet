@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 echo -e '\033[0m'
 echo -e '   \033[0;90m__ ______        __                    '
 echo -e '  |  |   _  \.-----|  |_  .------._   ___ '
