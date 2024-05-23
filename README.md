@@ -10,11 +10,11 @@
                                        
 # journalNet
 Daily journaling service
-by slackjeff
+By slackjeff and his party members, Demogorgon and devnull. 
 
-# journalNet: Zines + ASCII
-Bring back the fun!
-by slackjeff and Demogorgon
+By Demogorgon > New functions with retro style.
+By devnull > Code enhancements following the POSIX way. 
+
 ```
 **Installation notes**
 - Read the README files =)
@@ -55,7 +55,7 @@ Note: Remove blank spaces after the end of addresses lines in bookmarks.txt
 **readme file**: Basic info.  
 **log files**: There's two log files, the server and visitors counter log in /var/log/journalnet.log and the Guestbook file in /var/log/journalnet_messages.log  
 
-_Made by slackjeff sorcery with Demogorgon's scratches and dents._  
+_Made by slackjeff sorcery with Demogorgon's teeth and claws. Arisen by devnull brainstorm vortex._  
 
 ## Contribuitors THKS ❤
 
