@@ -87,7 +87,7 @@ Bookmarks()
     exit 0
     ;;
     [1-9]|[1-9][0-9]|${#bookmark_addrs[@]})
-    if [ "$choice" -le "${#bookmark_addrs[@]}" ] && [[ -e /usr/bin/journal ]]; then
+    if [ "$choice" -le "${#bookmark_addrs[@]}" ] && [[ -e /usr/local/bin/journal ]]; then
     bookmark_addr=${bookmark_addrs[$(($choice - 1))]}
     	timeout 3 journal "${bookmark_addr##* }"
     else
