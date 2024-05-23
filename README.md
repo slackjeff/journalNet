@@ -10,11 +10,10 @@
                                        
 # journalNet
 Daily journaling service
-By slackjeff and his party members, Demogorgon and devnull. 
+By *slackjeff* and his party members, Demogorgon and devnull. 
 
-By Demogorgon > New functions with retro style.
-By devnull > Code enhancements following the POSIX way. 
-
+Demogorgon > New functions with retro style.
+devnull > Code enhancements following the POSIX way. 
 ```
 **Installation notes**
 - Read the README files =)
