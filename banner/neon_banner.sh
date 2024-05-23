@@ -15,5 +15,4 @@ printf " ${PURPLE}__  |   ||   | |  .${CYAN}'${PURPLE}|   |  ___      ${CYAN}\`$
 printf "${CYAN}\`${PURPLE}._|=|__.${CYAN}'${PURPLE}|___| |.${CYAN}'${PURPLE}  |___|=|_.${CYAN}'        \`${PURPLE}.|     \n"
 printf "  _    _    _                 _    _    _      \n"
 printf " _${BLUE}'${PURPLE}\"-${BLUE}.${PURPLE}_${BLUE}'${PURPLE}\"-${BLUE}.${PURPLE}_${BLUE}'${PURPLE}\"-${BLUE}.${PURPLE}_ ${GRAY}journalNet${PURPLE} _${BLUE}'${PURPLE}\"-${BLUE}.${PURPLE}_${BLUE}'${PURPLE}\"-${BLUE}.${PURPLE}_${BLUE}'${PURPLE}\"-${BLUE}.${PURPLE}_  \n"
-
 printf "${RESET}\n"
