@@ -12,8 +12,8 @@
 Daily journaling service
 By slackjeff and his party members: 
 
-Demogorgon: New functions with retro style.
-devnull: Code enhancements following the POSIX way. 
+> Demogorgon - New functions with retro style.
+> devnull - Code enhancements following the POSIX way. 
 ```
 **Installation notes**
 - Read the README files =)
