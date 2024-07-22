@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+
+RESET='\033[0m'
+GRAY='\033[0;90m' 
+BOLD_GRAY='\033[1;90m'
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+
 port=2826
 
 ############################################################
@@ -17,28 +24,28 @@ Banner()
 Help()
 {
    # Display Help
-   echo "Usage: $(basename $0) user@host.example"
-   echo ""
-   echo "journalNet Client Options:"
-   echo "-B     Show random ASCII Banner from banner folder."
-   echo "-b     Print the addresses in bookmarks.txt file."
-   echo "-m     Write a message in the Guestbook."
-   echo "-g     Show the Guestbook."
-   echo "-h     Print this help."
-   echo ""
-   echo "Info: You can read journals with netcat:"
-   echo "echo \"user\" | nc -N 127.0.0.1 2826"
-   echo "echo \"user\" | nc -q 0 127.0.0.1 2826"
+   printf "Usage: $(basename $0) user@host.example\n"
+   printf "${RESET}\n"
+   printf "journalNet Client Options:\n"
+   printf -- "-B     Show random ASCII Banner from banner folder.\n"
+   printf -- "-b     Print the addresses in bookmarks.txt file.\n"
+   printf -- "-m     Write a message in the Guestbook.\n"
+   printf -- "-g     Show the Guestbook.\n"
+   printf -- "-h     Print this help.\n"
+   printf "${RESET}\n"
+   printf "Info: You can read journals with netcat:\n"
+   printf "echo \"user\" | nc -N 127.0.0.1 2826\n"
+   printf "echo \"user\" | nc -q 0 127.0.0.1 2826\n"
    exit 0
 }
 
 Usage()
 {
-    echo "journalNet Client"
-    echo "Usage: $(basename $0) user@host.example"
-    echo "       $(basename $0) -g user@host.example to read the Guestbook."
-    echo "       $(basename $0) -m user@host.example to write a message in the Guestbook."
-    echo "       $(basename $0) -h for help."
+    printf "journalNet Client\n"
+    printf "Usage: $(basename $0) user@host.example\n"
+    printf "       $(basename $0) -g user@host.example to read the Guestbook.\n"
+    printf "       $(basename $0) -m user@host.example to write a message in the Guestbook.\n"
+    printf "       $(basename $0) -h for help.\n"
     exit 0
 }
 
@@ -54,17 +61,17 @@ Bookmarks()
     # Function to ping hosts and return status.
     ping_host() {
     local host=$1
-    bhostname=$(echo $host | cut -d"@" -f 2)
+    bhostname=$(printf $host | cut -d"@" -f 2)
     ping -c 1 -W 1 "$bhostname" > /dev/null 2>&1
     if [ $? -eq 0 ]; then
-        echo -e "[\033[0;32mHost Online\033[0m]"
+        printf "[${GREEN}Host Online${RESET}]"
     else
-        echo -e "[\033[0;31mPing OFF\033[0m]"
+        printf "[${RED}Ping OFF${RESET}]"
     fi
     }
     # Check if the file exists.
     if [ ! -f "$BOOKMARKS_ADDR_FILE" ]; then
-         echo -e "Error: The file $BOOKMARKS_ADDR_FILE does not exist."
+         printf "Error: The file $BOOKMARKS_ADDR_FILE does not exist.\n"
     exit 1
     fi
     # Read journal's addresses from the file into an array.
@@ -72,18 +79,18 @@ Bookmarks()
     # Clear the screen.
     clear
     # Display menu and ping status.
-    echo "Bookmark List"
-    echo ""
+    printf "Bookmark List\n"
+    printf "${RESET}\n"
     for i in "${!bookmark_addrs[@]}"; do
-    	echo "$(($i + 1))) ${bookmark_addrs[$i]} - $(ping_host ${bookmark_addrs[$i]})"
+    	printf "$(($i + 1))) ${bookmark_addrs[$i]} - $(ping_host ${bookmark_addrs[$i]})\n"
     done
     # Prompt user for a choice.
-    echo ""
+    printf "\n"
     read -p "Enter your choice [1-$((${#bookmark_addrs[@]}))] or 0 to exit: " choice
     # Process user choice.
     case $choice in
     0)
-    echo -e "\033[0;90mHasta la vista, \033[1;90mBaby!\033[0m" >&2
+    printf "${GRAY}Hasta la vista, ${BOLD_GRAY}Baby!\n" >&2
     exit 0
     ;;
     [1-9]|[1-9][0-9]|${#bookmark_addrs[@]})
@@ -96,7 +103,7 @@ Bookmarks()
     fi
     ;;
     *)
-    echo "Invalid option. Please try again."
+    printf "Invalid option. Please try again.\n"
     ;;
     esac
 }
@@ -106,21 +113,21 @@ Bookmarks()
 ############################################################
 Message()
 {
-echo "Messenger"    
+printf "Messenger\n"    
 read -p "Enter your nickname: " mnickname
 read -p "Enter your mail/journal/socialnet: " mcontact
 read -p "Enter your message: " mmessage
 if [[ -z "$mnickname" || -z "$mmessage" ]]; then
-    echo "Either you have not entered your nickname, or you have not entered the message."
+    printf "Either you have not entered your nickname, or you have not entered the message."
     exit 1
 else
 read -p "Send it (y/n)? " choice
-echo ""
+printf "${RESET}\n"
 fi
 case "$choice" in 
   y|Y ) ;;
   n|N ) exit;;
-  * ) echo "Error: Invalid option." && exit 1;;
+  * ) printf "Error: Invalid option.\n" && exit 1;;
 esac
 }
 
@@ -154,7 +161,7 @@ while getopts ":Bhbmg" option; do
          Help
          exit;;
      \?) # Invalid option
-         echo "Error: Invalid option."
+         printf "Error: Invalid option.\n"
          exit;;
    esac
 done
@@ -175,12 +182,13 @@ re="[A-Za-z0-9]+@[A-Za-z0-9.]+"
 # Take user and host.
 user="$(echo "$@" | cut -d ' ' -f 2| cut -d @ -f 1)"
 host="$(echo "$@" | cut -d @ -f 2)"
-echo "Connecting to $user@$host..."
+printf "Connecting to $user@$host..."
+printf "${RESET}\n"
 # Open socket.
 exec 3<>/dev/tcp/$host/$port
-echo "$user" >&3
-echo "$mnickname" >&3
-echo "$mmessage" >&3
-echo "$mcontact" >&3
-echo "$guestbook" >&3
+printf "$user\n" >&3
+printf "$mnickname\n" >&3
+printf "$mmessage\n" >&3
+printf "$mcontact\n" >&3
+printf "$guestbook\n" >&3
 cat <&3

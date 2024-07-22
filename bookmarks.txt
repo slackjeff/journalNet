@@ -1,3 +1,3 @@
 slackjeff@127.0.0.1
 demogorgon@127.0.0.1
-buzz@127.0.0.1
+devnull@127.0.0.1
